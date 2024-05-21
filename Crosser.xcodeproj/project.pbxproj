@@ -15,9 +15,14 @@
 		245AEDEA2BF5FED800AE86C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 245AEDE82BF5FED800AE86C2 /* Main.storyboard */; };
 		245AEDEC2BF5FED900AE86C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 245AEDEB2BF5FED900AE86C2 /* Assets.xcassets */; };
 		245AEDEF2BF5FED900AE86C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 245AEDED2BF5FED900AE86C2 /* LaunchScreen.storyboard */; };
-		245AEDF92BF5FED900AE86C2 /* CrossyroadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEDF82BF5FED900AE86C2 /* CrossyroadTests.swift */; };
+		245AEDF92BF5FED900AE86C2 /* CrosserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEDF82BF5FED900AE86C2 /* CrosserTests.swift */; };
 		245AEE032BF5FED900AE86C2 /* CrossyroadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE022BF5FED900AE86C2 /* CrossyroadUITests.swift */; };
 		245AEE052BF5FED900AE86C2 /* CrossyroadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE042BF5FED900AE86C2 /* CrossyroadUITestsLaunchTests.swift */; };
+		245AEE182BFAEE0300AE86C2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE172BFAEE0300AE86C2 /* Character.swift */; };
+		245AEE1A2BFAEE3900AE86C2 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE192BFAEE3900AE86C2 /* Segment.swift */; };
+		245AEE1E2BFAFC8500AE86C2 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE1D2BFAFC8500AE86C2 /* Car.swift */; };
+		245AEE202BFB1D7700AE86C2 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 245AEE1F2BFB1D7700AE86C2 /* GameOver.sks */; };
+		245AEE222BFB1DE400AE86C2 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE212BFB1DE400AE86C2 /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		245AEDDB2BF5FED800AE86C2 /* Crossyroad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crossyroad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		245AEDDB2BF5FED800AE86C2 /* Crosser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crosser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		245AEDDE2BF5FED800AE86C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		245AEDE02BF5FED800AE86C2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		245AEDE22BF5FED800AE86C2 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -47,11 +52,16 @@
 		245AEDE92BF5FED800AE86C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		245AEDEB2BF5FED900AE86C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		245AEDEE2BF5FED900AE86C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		245AEDF42BF5FED900AE86C2 /* CrossyroadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrossyroadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		245AEDF82BF5FED900AE86C2 /* CrossyroadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossyroadTests.swift; sourceTree = "<group>"; };
-		245AEDFE2BF5FED900AE86C2 /* CrossyroadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrossyroadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		245AEDF42BF5FED900AE86C2 /* CrosserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrosserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		245AEDF82BF5FED900AE86C2 /* CrosserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrosserTests.swift; sourceTree = "<group>"; };
+		245AEDFE2BF5FED900AE86C2 /* CrosserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrosserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		245AEE022BF5FED900AE86C2 /* CrossyroadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossyroadUITests.swift; sourceTree = "<group>"; };
 		245AEE042BF5FED900AE86C2 /* CrossyroadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossyroadUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		245AEE172BFAEE0300AE86C2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		245AEE192BFAEE3900AE86C2 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		245AEE1D2BFAFC8500AE86C2 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		245AEE1F2BFB1D7700AE86C2 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
+		245AEE212BFB1DE400AE86C2 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +92,9 @@
 		245AEDD22BF5FED800AE86C2 = {
 			isa = PBXGroup;
 			children = (
-				245AEDDD2BF5FED800AE86C2 /* Crossyroad */,
-				245AEDF72BF5FED900AE86C2 /* CrossyroadTests */,
-				245AEE012BF5FED900AE86C2 /* CrossyroadUITests */,
+				245AEDDD2BF5FED800AE86C2 /* Crosser */,
+				245AEDF72BF5FED900AE86C2 /* CrosserTests */,
+				245AEE012BF5FED900AE86C2 /* CrosserUITests */,
 				245AEDDC2BF5FED800AE86C2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,51 +102,56 @@
 		245AEDDC2BF5FED800AE86C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				245AEDDB2BF5FED800AE86C2 /* Crossyroad.app */,
-				245AEDF42BF5FED900AE86C2 /* CrossyroadTests.xctest */,
-				245AEDFE2BF5FED900AE86C2 /* CrossyroadUITests.xctest */,
+				245AEDDB2BF5FED800AE86C2 /* Crosser.app */,
+				245AEDF42BF5FED900AE86C2 /* CrosserTests.xctest */,
+				245AEDFE2BF5FED900AE86C2 /* CrosserUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		245AEDDD2BF5FED800AE86C2 /* Crossyroad */ = {
+		245AEDDD2BF5FED800AE86C2 /* Crosser */ = {
 			isa = PBXGroup;
 			children = (
 				245AEDDE2BF5FED800AE86C2 /* AppDelegate.swift */,
 				245AEDE02BF5FED800AE86C2 /* GameScene.sks */,
+				245AEE1F2BFB1D7700AE86C2 /* GameOver.sks */,
 				245AEDE22BF5FED800AE86C2 /* Actions.sks */,
 				245AEDE42BF5FED800AE86C2 /* GameScene.swift */,
+				245AEE212BFB1DE400AE86C2 /* GameOver.swift */,
+				245AEE192BFAEE3900AE86C2 /* Segment.swift */,
+				245AEE172BFAEE0300AE86C2 /* Character.swift */,
+				245AEE1D2BFAFC8500AE86C2 /* Car.swift */,
 				245AEDE62BF5FED800AE86C2 /* GameViewController.swift */,
 				245AEDE82BF5FED800AE86C2 /* Main.storyboard */,
 				245AEDEB2BF5FED900AE86C2 /* Assets.xcassets */,
 				245AEDED2BF5FED900AE86C2 /* LaunchScreen.storyboard */,
 			);
-			path = Crossyroad;
+			path = Crosser;
 			sourceTree = "<group>";
 		};
-		245AEDF72BF5FED900AE86C2 /* CrossyroadTests */ = {
+		245AEDF72BF5FED900AE86C2 /* CrosserTests */ = {
 			isa = PBXGroup;
 			children = (
-				245AEDF82BF5FED900AE86C2 /* CrossyroadTests.swift */,
+				245AEDF82BF5FED900AE86C2 /* CrosserTests.swift */,
 			);
-			path = CrossyroadTests;
+			path = CrosserTests;
 			sourceTree = "<group>";
 		};
-		245AEE012BF5FED900AE86C2 /* CrossyroadUITests */ = {
+		245AEE012BF5FED900AE86C2 /* CrosserUITests */ = {
 			isa = PBXGroup;
 			children = (
 				245AEE022BF5FED900AE86C2 /* CrossyroadUITests.swift */,
 				245AEE042BF5FED900AE86C2 /* CrossyroadUITestsLaunchTests.swift */,
 			);
-			path = CrossyroadUITests;
+			path = CrosserUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		245AEDDA2BF5FED800AE86C2 /* Crossyroad */ = {
+		245AEDDA2BF5FED800AE86C2 /* Crosser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 245AEE082BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "Crossyroad" */;
+			buildConfigurationList = 245AEE082BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "Crosser" */;
 			buildPhases = (
 				245AEDD72BF5FED800AE86C2 /* Sources */,
 				245AEDD82BF5FED800AE86C2 /* Frameworks */,
@@ -146,14 +161,14 @@
 			);
 			dependencies = (
 			);
-			name = Crossyroad;
+			name = Crosser;
 			productName = Crossyroad;
-			productReference = 245AEDDB2BF5FED800AE86C2 /* Crossyroad.app */;
+			productReference = 245AEDDB2BF5FED800AE86C2 /* Crosser.app */;
 			productType = "com.apple.product-type.application";
 		};
-		245AEDF32BF5FED900AE86C2 /* CrossyroadTests */ = {
+		245AEDF32BF5FED900AE86C2 /* CrosserTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 245AEE0B2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrossyroadTests" */;
+			buildConfigurationList = 245AEE0B2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrosserTests" */;
 			buildPhases = (
 				245AEDF02BF5FED900AE86C2 /* Sources */,
 				245AEDF12BF5FED900AE86C2 /* Frameworks */,
@@ -164,14 +179,14 @@
 			dependencies = (
 				245AEDF62BF5FED900AE86C2 /* PBXTargetDependency */,
 			);
-			name = CrossyroadTests;
+			name = CrosserTests;
 			productName = CrossyroadTests;
-			productReference = 245AEDF42BF5FED900AE86C2 /* CrossyroadTests.xctest */;
+			productReference = 245AEDF42BF5FED900AE86C2 /* CrosserTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		245AEDFD2BF5FED900AE86C2 /* CrossyroadUITests */ = {
+		245AEDFD2BF5FED900AE86C2 /* CrosserUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 245AEE0E2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrossyroadUITests" */;
+			buildConfigurationList = 245AEE0E2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrosserUITests" */;
 			buildPhases = (
 				245AEDFA2BF5FED900AE86C2 /* Sources */,
 				245AEDFB2BF5FED900AE86C2 /* Frameworks */,
@@ -182,9 +197,9 @@
 			dependencies = (
 				245AEE002BF5FED900AE86C2 /* PBXTargetDependency */,
 			);
-			name = CrossyroadUITests;
+			name = CrosserUITests;
 			productName = CrossyroadUITests;
-			productReference = 245AEDFE2BF5FED900AE86C2 /* CrossyroadUITests.xctest */;
+			productReference = 245AEDFE2BF5FED900AE86C2 /* CrosserUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +225,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 245AEDD62BF5FED800AE86C2 /* Build configuration list for PBXProject "Crossyroad" */;
+			buildConfigurationList = 245AEDD62BF5FED800AE86C2 /* Build configuration list for PBXProject "Crosser" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -223,9 +238,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				245AEDDA2BF5FED800AE86C2 /* Crossyroad */,
-				245AEDF32BF5FED900AE86C2 /* CrossyroadTests */,
-				245AEDFD2BF5FED900AE86C2 /* CrossyroadUITests */,
+				245AEDDA2BF5FED800AE86C2 /* Crosser */,
+				245AEDF32BF5FED900AE86C2 /* CrosserTests */,
+				245AEDFD2BF5FED900AE86C2 /* CrosserUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				245AEDEA2BF5FED800AE86C2 /* Main.storyboard in Resources */,
+				245AEE202BFB1D7700AE86C2 /* GameOver.sks in Resources */,
 				245AEDE12BF5FED800AE86C2 /* GameScene.sks in Resources */,
 				245AEDEC2BF5FED900AE86C2 /* Assets.xcassets in Resources */,
 				245AEDEF2BF5FED900AE86C2 /* LaunchScreen.storyboard in Resources */,
@@ -265,7 +281,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				245AEDE52BF5FED800AE86C2 /* GameScene.swift in Sources */,
+				245AEE1A2BFAEE3900AE86C2 /* Segment.swift in Sources */,
+				245AEE222BFB1DE400AE86C2 /* GameOver.swift in Sources */,
+				245AEE1E2BFAFC8500AE86C2 /* Car.swift in Sources */,
 				245AEDE72BF5FED800AE86C2 /* GameViewController.swift in Sources */,
+				245AEE182BFAEE0300AE86C2 /* Character.swift in Sources */,
 				245AEDDF2BF5FED800AE86C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				245AEDF92BF5FED900AE86C2 /* CrossyroadTests.swift in Sources */,
+				245AEDF92BF5FED900AE86C2 /* CrosserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,12 +312,12 @@
 /* Begin PBXTargetDependency section */
 		245AEDF62BF5FED900AE86C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 245AEDDA2BF5FED800AE86C2 /* Crossyroad */;
+			target = 245AEDDA2BF5FED800AE86C2 /* Crosser */;
 			targetProxy = 245AEDF52BF5FED900AE86C2 /* PBXContainerItemProxy */;
 		};
 		245AEE002BF5FED900AE86C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 245AEDDA2BF5FED800AE86C2 /* Crossyroad */;
+			target = 245AEDDA2BF5FED800AE86C2 /* Crosser */;
 			targetProxy = 245AEDFF2BF5FED900AE86C2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -513,7 +533,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crossyroad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Crossyroad";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crosser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Crosser";
 			};
 			name = Debug;
 		};
@@ -533,7 +553,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crossyroad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Crossyroad";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crosser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Crosser";
 			};
 			name = Release;
 		};
@@ -576,7 +596,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		245AEDD62BF5FED800AE86C2 /* Build configuration list for PBXProject "Crossyroad" */ = {
+		245AEDD62BF5FED800AE86C2 /* Build configuration list for PBXProject "Crosser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				245AEE062BF5FED900AE86C2 /* Debug */,
@@ -585,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		245AEE082BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "Crossyroad" */ = {
+		245AEE082BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "Crosser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				245AEE092BF5FED900AE86C2 /* Debug */,
@@ -594,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		245AEE0B2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrossyroadTests" */ = {
+		245AEE0B2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrosserTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				245AEE0C2BF5FED900AE86C2 /* Debug */,
@@ -603,7 +623,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		245AEE0E2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrossyroadUITests" */ = {
+		245AEE0E2BF5FED900AE86C2 /* Build configuration list for PBXNativeTarget "CrosserUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				245AEE0F2BF5FED900AE86C2 /* Debug */,
