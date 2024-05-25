@@ -18,9 +18,6 @@
 		245AEDF92BF5FED900AE86C2 /* CrosserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEDF82BF5FED900AE86C2 /* CrosserTests.swift */; };
 		245AEE032BF5FED900AE86C2 /* CrossyroadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE022BF5FED900AE86C2 /* CrossyroadUITests.swift */; };
 		245AEE052BF5FED900AE86C2 /* CrossyroadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE042BF5FED900AE86C2 /* CrossyroadUITestsLaunchTests.swift */; };
-		245AEE182BFAEE0300AE86C2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE172BFAEE0300AE86C2 /* Character.swift */; };
-		245AEE1A2BFAEE3900AE86C2 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE192BFAEE3900AE86C2 /* Segment.swift */; };
-		245AEE1E2BFAFC8500AE86C2 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE1D2BFAFC8500AE86C2 /* Car.swift */; };
 		245AEE202BFB1D7700AE86C2 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 245AEE1F2BFB1D7700AE86C2 /* GameOver.sks */; };
 		245AEE222BFB1DE400AE86C2 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AEE212BFB1DE400AE86C2 /* GameOver.swift */; };
 		24FBA1EB2BFC830E00135E74 /* carsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24FBA1EA2BFC830E00135E74 /* carsound.mp3 */; };
@@ -63,9 +60,6 @@
 		245AEDFE2BF5FED900AE86C2 /* CrosserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrosserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		245AEE022BF5FED900AE86C2 /* CrossyroadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossyroadUITests.swift; sourceTree = "<group>"; };
 		245AEE042BF5FED900AE86C2 /* CrossyroadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossyroadUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		245AEE172BFAEE0300AE86C2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		245AEE192BFAEE3900AE86C2 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
-		245AEE1D2BFAFC8500AE86C2 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		245AEE1F2BFB1D7700AE86C2 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		245AEE212BFB1DE400AE86C2 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		24FBA1EA2BFC830E00135E74 /* carsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = carsound.mp3; sourceTree = "<group>"; };
@@ -132,9 +126,6 @@
 				24FBA1F12BFCC39700135E74 /* StartScene.swift */,
 				245AEDE42BF5FED800AE86C2 /* GameScene.swift */,
 				245AEE212BFB1DE400AE86C2 /* GameOver.swift */,
-				245AEE192BFAEE3900AE86C2 /* Segment.swift */,
-				245AEE172BFAEE0300AE86C2 /* Character.swift */,
-				245AEE1D2BFAFC8500AE86C2 /* Car.swift */,
 				245AEDE62BF5FED800AE86C2 /* GameViewController.swift */,
 				245AEDE82BF5FED800AE86C2 /* Main.storyboard */,
 				245AEDEB2BF5FED900AE86C2 /* Assets.xcassets */,
@@ -312,11 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				245AEDE52BF5FED800AE86C2 /* GameScene.swift in Sources */,
-				245AEE1A2BFAEE3900AE86C2 /* Segment.swift in Sources */,
 				245AEE222BFB1DE400AE86C2 /* GameOver.swift in Sources */,
-				245AEE1E2BFAFC8500AE86C2 /* Car.swift in Sources */,
 				245AEDE72BF5FED800AE86C2 /* GameViewController.swift in Sources */,
-				245AEE182BFAEE0300AE86C2 /* Character.swift in Sources */,
 				245AEDDF2BF5FED800AE86C2 /* AppDelegate.swift in Sources */,
 				24FBA1F22BFCC39700135E74 /* StartScene.swift in Sources */,
 			);
