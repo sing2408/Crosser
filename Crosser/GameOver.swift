@@ -1,5 +1,11 @@
+//
+//  GameOver.swift
+//  Crosser
+//
+//  Created by Singgih Tulus Makmud on 21/05/24.
+//
+
 import SpriteKit
-import GameplayKit
 
 class GameOver: SKScene {
     
@@ -15,12 +21,9 @@ class GameOver: SKScene {
             label?.text = "Better Luck Next Time"
         }
         
-        // Display the final score
-        scoreLabel?.text = "Score: \(finalScore)"
-        
-        // Retrieve and display the high score
+        scoreLabel?.text = "Distance: \(finalScore)"
         let highScore = UserDefaults.standard.integer(forKey: "HighScore")
-        highScoreLabel?.text = "High Score: \(highScore)"
+        highScoreLabel?.text = "Longest Distance: \(highScore)"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
