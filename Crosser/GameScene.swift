@@ -1,7 +1,10 @@
 import SpriteKit
 import AVFoundation
-//testing
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var audioPlayer: AVAudioPlayer?
+    var backgroundMusicPlayer: AVAudioPlayer?
     
     let characterCategory: UInt32 = 0x1
     let carCategory: UInt32 = 0x10
@@ -10,6 +13,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var birdSpawnInterval: TimeInterval = 5.0 // Initial bird spawn interval
     let baseBirdSpawnInterval: TimeInterval = 5.0 // Base bird spawn interval
     var birdSpeed: CGFloat = 300.0 // Adjust the bird falling speed as needed
+    let minBirdSpawnInterval: TimeInterval = 0.5 // Adjust as needed
+
     
     // Score
     private var scoreLabel: SKLabelNode?
@@ -23,21 +28,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let segmentHeight: CGFloat = 250.0
     var moveSpeed: CGFloat = 1.0
     let baseMoveSpeed: CGFloat = 1.0
-    let speedIncrement: CGFloat = 0.5
+    let speedIncrement: CGFloat = 0.2
     var segmentQueue: [SKSpriteNode] = []
     var roadSegmentHasCar: [Int: Bool] = [:]
     
     // Car spawn frequency
     var carSpawnInterval: TimeInterval = 3.0
     let baseCarSpawnInterval: TimeInterval = 3.0
-    let spawnIntervalDecrement: TimeInterval = 0.5
+    let spawnIntervalDecrement: TimeInterval = 0.2
     
     // Gesture swipe
     private var startTouchPosition: CGPoint?
     private var endTouchPosition: CGPoint?
     
     override func didMove(to view: SKView) {
-        
         self.physicsWorld.contactDelegate = self
         
         self.scoreLabel = self.childNode(withName: "//scorelabel") as? SKLabelNode
@@ -66,94 +70,109 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scene?.listener = character
         
         spawnCars()
+        
+        playBackgroundMusic()
     }
-        
-        func playBirdSoundCue(at xPosition: CGFloat) {
-            // Create an audio node for the bird sound
-            let birdSound = SKAudioNode(fileNamed: "birdsound.mp3")
-            birdSound.autoplayLooped = false
-            birdSound.isPositional = true // Enable positional audio
-            
-            // Set position relative to the listener based on xPosition
-            birdSound.position = CGPoint(x: xPosition, y: 0)
-            
-            // Add the sound node to the scene
-            addChild(birdSound)
-            
-            // Run the sound action
-            birdSound.run(SKAction.play()) {
-                birdSound.removeFromParent() // Remove sound node after playing
-            }
+    
+    func playBackgroundMusic() {
+        // Get the URL of the background music file
+        guard let url = Bundle.main.url(forResource: "bgmusic", withExtension: "mp3") else {
+            print("Background music file not found")
+            return
         }
         
-        func spawnBird() {
-            // Calculate the random X position for the bird, either left or right side of the screen
-            let isLeftSide = Bool.random()
-            let randomX: CGFloat
-            if isLeftSide {
-                randomX = CGFloat.random(in: -self.size.width / 2...(-self.size.width / 4))
-            } else {
-                randomX = CGFloat.random(in: self.size.width / 4...self.size.width / 2)
-            }
-
-            // Play sound cue indicating the bird's upcoming appearance
-            playBirdSoundCue(at: randomX)
-
-            // Delay the actual spawning of the bird after the sound cue
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
-                let bird = SKSpriteNode(imageNamed: "bird1")
-                bird.name = "bird"
-                let birdSize = CGSize(width: 200, height: 200)
-                bird.size = birdSize
-
-                // Set the position of the bird
-                let initialY = self.size.height / 2 // Set the initial Y position to the top of the screen
-                bird.position = CGPoint(x: randomX, y: initialY)
-
-                // Set the zPosition of the bird to be the highest
-                bird.zPosition = 1000
-
-                // Add physics body for collision detection if needed
-                bird.physicsBody = SKPhysicsBody(rectangleOf: bird.size)
-                bird.physicsBody?.categoryBitMask = carCategory
-                bird.physicsBody?.contactTestBitMask = characterCategory
-                bird.physicsBody?.collisionBitMask = characterCategory
-                bird.physicsBody?.affectedByGravity = false
-
-                // Add flap sound to the bird
-                let flapSound = SKAudioNode(fileNamed: "flapsound.mp3")
-                flapSound.autoplayLooped = true
-                flapSound.isPositional = true // Enable positional audio
-                bird.addChild(flapSound)
-
-                // Add the bird node to the scene
-                self.addChild(bird)
-
-                // Calculate the duration for the bird's movement
-                let distance = self.size.height // Distance the bird will travel
-                let duration = distance / self.birdSpeed // Duration based on birdSpeed
-
-                // Set up actions for the bird's movement and removal
-                let moveAction = SKAction.moveBy(x: 0, y: -distance, duration: TimeInterval(duration))
-                let removeAction = SKAction.removeFromParent()
-                let sequence = SKAction.sequence([moveAction, removeAction])
-                bird.run(sequence)
-            }
+        // Initialize the audio player with the background music file
+        do {
+            backgroundMusicPlayer = try AVAudioPlayer(contentsOf: url)
+            backgroundMusicPlayer?.numberOfLoops = -1 // Loop indefinitely
+            backgroundMusicPlayer?.volume = 0.1 // Set initial volume (adjust as needed)
+            backgroundMusicPlayer?.play() // Start playing the background music
+        } catch {
+            print("Error playing background music: \(error)")
         }
+    }
     
+    func spawnBird() {
+        // Calculate the random X position for the bird, either left or right side of the screen
+        let isLeftSide = Bool.random()
+        let randomX: CGFloat
+        if isLeftSide {
+            randomX = CGFloat.random(in: -self.size.width/2...(-self.size.width/4))
+        } else {
+            randomX = CGFloat.random(in: self.size.width/4...self.size.width/2)
+        }
 
+        // Play sound cue indicating the bird's upcoming appearance
+        playBirdSoundCue(at: randomX)
 
+        // Delay the actual spawning of the bird after the sound cue
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
+            let bird = SKSpriteNode(imageNamed: "bird1")
+            bird.name = "bird"
+            let birdSize = CGSize(width: 200, height: 200)
+            bird.size = birdSize
+            
+            // Set the position of the bird
+            let initialY = self.size.height / 2 // Set the initial Y position to the top of the screen
+            bird.position = CGPoint(x: randomX, y: initialY)
+            
+            // Set the zPosition of the bird to be the highest
+            bird.zPosition = 1000
+            
+            // Add physics body for collision detection if needed
+            bird.physicsBody = SKPhysicsBody(rectangleOf: bird.size)
+            bird.physicsBody?.categoryBitMask = carCategory
+            bird.physicsBody?.contactTestBitMask = characterCategory
+            bird.physicsBody?.collisionBitMask = characterCategory
+            bird.physicsBody?.affectedByGravity = false
+            
+            // Add flap sound to the bird
+            let flapSound = SKAudioNode(fileNamed: "flapsound.mp3")
+            flapSound.autoplayLooped = true
+            flapSound.isPositional = true // Enable positional audio
+            flapSound.position = CGPoint(x: 0, y: 0) // Ensure the sound is centered on the car
+            flapSound.name = "flapSound"
+            bird.addChild(flapSound)
+            
+            // Add the bird node to the scene
+            self.addChild(bird)
+            
+            // Calculate the duration for the bird's movement
+            let distance = self.size.height // Distance the bird will travel
+            let duration = distance / self.birdSpeed // Duration based on birdSpeed
+            
+            // Set up actions for the bird's movement and removal
+            let moveAction = SKAction.moveBy(x: 0, y: -distance, duration: TimeInterval(duration))
+            let removeAction = SKAction.removeFromParent()
+            let sequence = SKAction.sequence([moveAction, removeAction])
+            bird.run(sequence)
+        }
+    }
 
-
-    
+    func playBirdSoundCue(at xPosition: CGFloat) {
+        // Create an audio node for the bird sound
+        let birdSound = SKAudioNode(fileNamed: "birdsound.mp3")
+        birdSound.autoplayLooped = false
+        birdSound.isPositional = true // Enable positional audio
+        
+        // Set position relative to the listener based on xPosition
+        birdSound.position = CGPoint(x: xPosition, y: 0)
+        
+        // Add the sound node to the scene
+        addChild(birdSound)
+        
+        // Run the sound action
+        birdSound.run(SKAction.play())
+    }
     
     
     override func update(_ currentTime: TimeInterval) {
         updateSpeed() // Call updateSpeed() at the beginning of each frame update
         moveSegments()
         updateSounds()
-        scoreLabel?.text = "Distance: \(score)"
         updateSpawnFrequency()
+        
+        
         
         
         // Check if the character goes out of bounds
@@ -307,7 +326,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func spawnCar() {
         // Calculate the base speed of the car based on the score
-        let baseCarSpeed = CGFloat(100.0 + 10.0 * Double(score))
+        let baseCarSpeed = CGFloat(100.0 + 5.0 * Double(score))
         
         // Introduce a random factor to the car speed
         let randomFactor = CGFloat.random(in: 0.5...1.5) // Adjust the range of the random factor as desired
@@ -320,6 +339,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         car.name = "car"
         let carSize = CGSize(width: 250, height: 150)
         car.size = carSize
+        
+        let hitboxSize = CGSize(width: carSize.width * 0.8, height: carSize.height * 0.8)
         
         // Randomly select a road segment for car spawn
         let availableSegments = segmentQueue.filter { $0.name == "road" && !roadSegmentHasCar[$0.userData?["index"] as! Int, default: false] }
@@ -347,7 +368,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         car.position = CGPoint(x: carX, y: roadSegment.position.y)
         
         // Set up physics body for the car
-        car.physicsBody = SKPhysicsBody(rectangleOf: car.size)
+        car.physicsBody = SKPhysicsBody(rectangleOf: hitboxSize)
         car.physicsBody?.categoryBitMask = carCategory
         car.physicsBody?.contactTestBitMask = characterCategory
         car.physicsBody?.collisionBitMask = characterCategory
@@ -412,7 +433,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             moveSpeed = baseMoveSpeed
         }
-        print("Current moveSpeed: \(moveSpeed)") // Print out the moveSpeed value
     }
     
     
@@ -435,27 +455,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             run(SKAction.repeatForever(spawnAction), withKey: "spawnCarsAction")
         }
         
-        // Update the duration of the existing bird spawning action
-        if let spawnBirdsAction = action(forKey: "spawnBirdsAction") {
-            spawnBirdsAction.duration = birdSpawnInterval
-        } else {
-            // If the action doesn't exist, create it
-            let spawnAction = SKAction.sequence([
-                SKAction.run(spawnBird),
-                SKAction.wait(forDuration: birdSpawnInterval, withRange: 0.1)
-            ])
-            run(SKAction.repeatForever(spawnAction), withKey: "spawnBirdsAction")
+        birdSpawnInterval = baseBirdSpawnInterval/2
+           
+        if score >= 20{
+            
+            if let spawnBirdsAction = action(forKey: "spawnBirdsAction") {
+                spawnBirdsAction.duration = birdSpawnInterval
+            } else {
+                // If the action doesn't exist, create it
+                let spawnAction = SKAction.sequence([
+                    SKAction.run(spawnBird),
+                    SKAction.wait(forDuration: birdSpawnInterval, withRange: 0.1)
+                ])
+                run(SKAction.repeatForever(spawnAction), withKey: "spawnBirdsAction")
+            }
+        }
+           // Update the duration of the existing bird spawning action
+           
+    }
+
+ 
+
+    func playCollisionSound() {
+        guard let url = Bundle.main.url(forResource: "hitsound", withExtension: "mp3") else {
+            print("Sound file not found")
+            return
+        }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+            print("Collision sound played")
+        } catch {
+            print("Error playing sound: \(error)")
         }
     }
-    
-    
-    
+
     func didBegin(_ contact: SKPhysicsContact) {
         let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         // Check if collision occurs between character and car
         if collision == (characterCategory | carCategory) {
             print("Collision detected")
+            
+            // Play collision sound using AVAudioPlayer
+            playCollisionSound()
+            
             character?.texture = SKTexture(imageNamed: "frame")
             
             // Update high score
@@ -466,11 +511,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene.finalScore = score
                 scene.win = false
                 scene.scaleMode = .aspectFill
-                let transition = SKTransition.push(with: .up, duration: 1.0)
+                let transition = SKTransition.push(with: .up, duration: 3.0)
                 self.view?.presentScene(scene, transition: transition)
             }
         }
     }
+
+
     
     func endGame() {
         // Update high score
@@ -493,7 +540,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    override func willMove(from view: SKView) {
+        // Stop playing background music when leaving the scene
+        backgroundMusicPlayer?.stop()
+    }
     
     
 }
-
